@@ -11,15 +11,21 @@ As we work on large computer infrastructures, we distinguish between three relat
 
 The last part of the lecture describes Amazon Web Services (AWS) in some detail to prepare you for the practicum. Services to remember are ==S3== block storage (infinitely scaling storage -- presumably implemented by spreading storage with replication over the hundreds of thousands of machines Amazon owns), ==EBFS== filesystems which are virtual disks that store their data remotely on S3 but do a lot of caching to avoid network traffic, and the ==EC2== service that allows to power up virtual machines in the cloud (and some of the options to choose from in terms of CPU, RAM, and local disks aka "ephimeral storage" which are empty when you start-up).
 
-## Course Materials
+## Course Summary
 
-- [Course Introduction](https://github.com/cyyeh/large-scale-data-engineering/blob/master/cloud-computing/00-Intro.pdf)
-- [Cloud Computing](https://github.com/cyyeh/large-scale-data-engineering/blob/master/cloud-computing/01-CloudComputing.pdf)
+### Course Introduction
+
+### Cloud Computing
+
 
 ## References
 
-- [The Datacenter as a Computer: An Introduction to the Design of Warehouse-Scale Machines](https://github.com/cyyeh/large-scale-data-engineering/blob/master/cloud-computing/datacenter-as-computer.pdf)
-- [Cloud Computing according to Wikipedia](https://en.wikipedia.org/wiki/Cloud_computing)
-- [Amazon Whitepaper: Architecting for the Cloud](https://github.com/cyyeh/large-scale-data-engineering/blob/master/cloud-computing/AWS_Cloud_Best_Practices.pdf)
-- [Strata 2011: Werner Vogels, "Data Without Limits"](https://youtu.be/oNTp5spjv0w)
-- [Introduction to Amazon Web Services - How to Scale your Next Idea on AWS : A Love Story - Jinesh Varia (Updated Jan 2014)](https://www.slideshare.net/AmazonWebServices/building-powerful-web-applications-in-the-aws-cloud-a-love-story-jinesh-varia)
+- Course Materials
+    - [Course Introduction](https://github.com/cyyeh/large-scale-data-engineering/blob/master/cloud-computing/00-Intro.pdf)
+    - [Cloud Computing](https://github.com/cyyeh/large-scale-data-engineering/blob/master/cloud-computing/01-CloudComputing.pdf)
+- Supplementary Materials
+    - [The Datacenter as a Computer: An Introduction to the Design of Warehouse-Scale Machines](https://github.com/cyyeh/large-scale-data-engineering/blob/master/cloud-computing/datacenter-as-computer.pdf)
+    - [Cloud Computing according to Wikipedia](https://en.wikipedia.org/wiki/Cloud_computing)
+    - [Amazon Whitepaper: Architecting for the Cloud](https://github.com/cyyeh/large-scale-data-engineering/blob/master/cloud-computing/AWS_Cloud_Best_Practices.pdf)
+    - [Strata 2011: Werner Vogels, "Data Without Limits"](https://youtu.be/oNTp5spjv0w)
+    - [Introduction to Amazon Web Services - How to Scale your Next Idea on AWS : A Love Story - Jinesh Varia (Updated Jan 2014)](https://www.slideshare.net/AmazonWebServices/building-powerful-web-applications-in-the-aws-cloud-a-love-story-jinesh-varia)
