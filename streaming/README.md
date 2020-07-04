@@ -1,4 +1,4 @@
-# Data Streams
+# [Data Streams](https://hackmd.io/@distributed-systems-engineering/data-streams)
 
 course website: https://event.cwi.nl/lsde/2019/streaming.shtml
 
