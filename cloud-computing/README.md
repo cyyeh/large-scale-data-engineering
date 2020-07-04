@@ -1,4 +1,4 @@
-# [Cloud Computing](https://hackmd.io/@mit-distributed-systems-engineering/cloud-computing)
+# [Cloud Computing](https://hackmd.io/@distributed-systems-engineering/cloud-computing)
 
 course website: https://event.cwi.nl/lsde/2019/cloud.shtml
 
