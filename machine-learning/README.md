@@ -14,12 +14,14 @@ Neural networks consist of weights and weights are numbers. When looking deep do
 
 - 32-bits or 16-bits floating point numbers (FP32, FP16). A floating point number consists of a mantissa (integer number), that is to be multiplied by some power of ten. When people use floating point numbers, typically some rounding error occurs because the numbers have a big range, but only 65536 (2 to the power 16) resp. 4 billion (2 to the power 32) points in that range are exactly representable as FP16 resp FP32.
 - 8-bits integer (aka byte), or 16-bits integer. While these are only whole numbers between 0 and 255 (resp 65535), or if signed between -128 and 127 (resp -32768 to 32767 for 16-bits), they can be turned into fractional numbers (decimals) by putting an imaginary dot in the binary number. This is called a fixed-precision number representation.
+
 Calculations on bytes are 10x cheaper than in FP32 in terms of area on the chip as well as energy consumption. Another energy factor is memory access: it is very expensive to access memory beyond the chip.
 Regarding scalability in deep learning, the following hardware/scalability challenges appear:
 
 - training ever more complex models on ever more data takes enormous computational power. This means it takes a lot of time, or a lot of hardware, and it always takes a lot of energy.
 - models are becoming ever larger. This makes it harder to deploy them, e.g. to mobile devices.
 - the energy consumption of even model deployment (let alone training) can be high, causing high cost when deploying models on a server in the cloud, or draining your mobile battery quickly.
+
 To counter this we have discussed a number of optimizations that make models smaller or reduce the computational needs of model training and deployment.
 
 - Node pruning: throw away weights close to 0; i.e. weights that hardly affect the outcomes. Retrain the remaining network. This technique can reduce the size of the network by 10x without precision loss.
@@ -43,3 +45,15 @@ To make deep learning scalable, one can try to parallelize it across multiple de
 Can parallelism make deep learning training scalable? Most deep learning frameworks offer multi-GPU training, as long as these multiple GPUs are located inside the same computer. This tends to scale nicely, but the practical maximum number of GPUs in a machine is 8 or so. Please note that NVIDIA GPUs inside the same machine can be directly connected to each other with an NVlink cable, which has much higher bandwidth (up to 300GB/s in Volta), and is 100x faster than a fast computer network (10Gbits=1GByte/sec ethernet). Therefore, parallelism works best between multiple GPUs on the same machine.
 
 Not many frameworks support distributing machine learning over multiple computers. It is best supported in Distributed TensorFlow, which offers various distribution methods and parameter synchronization algorithms, but scalability is not trivial to achieve with it.
+
+## References
+
+- Course Materials
+    - [Scalable Machine Learning](https://github.com/cyyeh/large-scale-data-engineering/blob/master/machine-learning/05-Scalable%20Machine%20Learning.pdf)
+- Supplementary Materials
+    - [In-Datacenter Performance Analysis of a Tensor Processing Unit](https://github.com/cyyeh/large-scale-data-engineering/blob/master/machine-learning/tpu.pdf)
+    - [Deep Compression: Compressing Deep Neural Networks with Pruning, Trained Quantization and Huffman Coding](https://github.com/cyyeh/large-scale-data-engineering/blob/master/machine-learning/deepcompression.pdf)
+    - [Distributed TensorFlow (TensorFlow Dev Summit 2017)](https://www.youtube.com/watch?v=la_M6bCV91M)
+    - [CS231n: Convolutional Neural Networks for Visual Recognition](http://cs231n.stanford.edu/)
+    - [Transfer learning with a pretrained ConvNet](https://www.tensorflow.org/tutorials/images/transfer_learning)
+    - [Deep Learning with PyTorch: A 60 Minute Blitz](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)
