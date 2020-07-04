@@ -23,3 +23,22 @@ MapReduce and Spark have been criticized for their low absolute performance (the
 Spark offers its MLLIB library that provides a set of ready-to-run machine learning algorithms that work on RDDs (and now also on DataFrames), and thus scale on a cluster. We focus on its Alternating Least Squares (ALS) implementation for collaborative filtering. In collaborative filtering, typically we have a very partial set of datapoints that describe users and their interests (e.g. songs). The purpose of collaborative filtering is to derive what all users think of all possible interests, specifically to recommend the most interesting items (songs) to users. ALS models this as a matrix problem where for each user and for each song we keep a vector of numbers: each element in this vector corresponds to a latent factor (characteristic). If we would know these factors, then multiplying them would give the matrix of all user/song interests. The ALS method iteratively approaches optimal vector values, using a (possibly small) set of known interests as training set.
 
 MLLIB contains many different machine learning algorithms that can be easily connected to data through the Spark concept of RDDs. The output of the learning (the model) is also an RDD and can subsequently be used to score new users (i.e. make recommendations). Besides tight integration with Spark processing pipelines (and e.g. Spark SQL) another advantage of MLLIB is that the algorithms in it are implemented in a scalable, distributed fashion. Therefore, one can address large problems with MLLIB using clusters, which would not fit on a single machine.
+
+## References
+
+- Course Materials
+    - [Spark](https://github.com/cyyeh/large-scale-data-engineering/blob/master/spark/04-The%20Spark%20Framework.pdf)
+- Supplementary Materials
+    - [Spark: Cluster Computing with Working Sets](https://github.com/cyyeh/large-scale-data-engineering/blob/master/spark/spark.pdf)
+    - [Scalability! But at what COST?](https://github.com/cyyeh/large-scale-data-engineering/blob/master/spark/cost.pdf)
+    - [Apache Spark: A Unified Engine for Big Data Processing](https://github.com/cyyeh/large-scale-data-engineering/blob/master/spark/spark-cacm.pdf)
+    - [Clash of the Titans: MapReduce vs. Spark for Large Scale Data Analytics](https://github.com/cyyeh/large-scale-data-engineering/blob/master/spark/mapreduce-vs-spark.pdf)
+    - [Pregel: A System for Large-Scale Graph Processing](https://github.com/cyyeh/large-scale-data-engineering/blob/master/spark/pregel.pdf)
+    - [MLI: An API for Distributed Machine Learning](https://github.com/cyyeh/large-scale-data-engineering/blob/master/spark/mli.pdf)
+    - [Matrix Factorization Techniques for Recommender Systems](https://github.com/cyyeh/large-scale-data-engineering/blob/master/spark/matrixfactorization.pdf)
+    - [Powering Data Science with Spark - Ion Stoica (Databricks) Ali Ghodsi (Databricks)](https://www.youtube.com/watch?v=GuVvNjZaxTs)
+    - [Structuring Apache Spark 2.0: SQL, DataFrames, Datasets And Streaming - by Michael Armbrust](https://www.youtube.com/watch?v=1a4pgYzeFwE)
+    - [Collaborative Filtering with Spark](https://www.slideshare.net/MrChrisJohnson/collaborative-filtering-with-spark)
+    - [Big Data Processing with Apache Spark](https://www.infoq.com/articles/apache-spark-introduction/)
+    - [Introducing DataFrames in Apache Spark for Large Scale Data Science](https://databricks.com/blog/2015/02/17/introducing-dataframes-in-spark-for-large-scale-data-science.html)
+    - [How to install PySpark and Jupyter Notebook in 3 Minutes](https://www.sicara.ai/blog/2017-05-02-get-started-pyspark-jupyter-notebook-3-minutes)
