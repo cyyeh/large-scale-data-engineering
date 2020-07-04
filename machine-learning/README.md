@@ -1,4 +1,4 @@
-# Scalable Machine Learning
+# [Scalable Machine Learning](https://hackmd.io/@distributed-systems-engineering/scalable-ml)
 
 course website: https://event.cwi.nl/lsde/2019/ml.shtml
 
