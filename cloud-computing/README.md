@@ -115,8 +115,6 @@ The last part of the lecture describes Amazon Web Services (AWS) in some detail 
     - Use Glacier for Cold Data
         - Glacier is structured like S3: a vault is a container for an arbitrary number of archives. Policies, accounting, and access control are associated with vaults, while an archive is a single object.
 
-
-
 ## References
 
 - Course Materials
@@ -127,4 +125,6 @@ The last part of the lecture describes Amazon Web Services (AWS) in some detail 
     - [Cloud Computing according to Wikipedia](https://en.wikipedia.org/wiki/Cloud_computing)
     - [Amazon Whitepaper: Architecting for the Cloud](https://github.com/cyyeh/large-scale-data-engineering/blob/master/cloud-computing/AWS_Cloud_Best_Practices.pdf)
     - [Strata 2011: Werner Vogels, "Data Without Limits"](https://youtu.be/oNTp5spjv0w)
-    - [Introduction to Amazon Web Services - How to Scale your Next Idea on AWS : A Love Story - Jinesh Varia (Updated Jan 2014)](https://www.slideshare.net/AmazonWebServices/building-powerful-web-applications-in-the-aws-cloud-a-love-story-jinesh-varia)
+    - Introduction to Amazon Web Services - How to Scale your Next Idea on AWS : A Love Story - Jinesh Varia (Updated Jan 2014)
+        - [Video](https://www.youtube.com/watch?v=wgiYfUs7rNY)
+        - [Slide](https://www.slideshare.net/AmazonWebServices/building-powerful-web-applications-in-the-aws-cloud-a-love-story-jinesh-varia)
