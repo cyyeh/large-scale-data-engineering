@@ -1,4 +1,4 @@
-# SQL on Big Data
+# [SQL on Big Data](https://hackmd.io/@distributed-systems-engineering/nosql-systems)
 
 course website: https://event.cwi.nl/lsde/2019/sql.shtml
 
