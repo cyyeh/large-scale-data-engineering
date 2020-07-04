@@ -15,6 +15,50 @@ The last part of the lecture describes Amazon Web Services (AWS) in some detail 
 
 ### Course Introduction
 
+- The goal of the course is to gain insight into and experience in using hardware infrastructures and software technologies for analyzing ‘big data’.
+- Solving such tasks(data management tasks where problem size/complexity requires using a cluster) requires
+    - insight in the main factors that underlie algorithm performance
+        - access pattern, hardware latency/bandwidth
+    - these factors guided the design of current Big Data infratructures
+        - helps understanding the challenges
+- Understanding the concepts
+    - hardware
+        - What components are hardware infrastructures made up of? 
+        - What are the properties of these hardware components?
+        - What does it take to access such hardware?
+    - software
+        - What software layers are used to handle Big Data?
+        - What are the principles behind this software?
+        - Which kind of software would one use for which data problem?
+- Scientific paradigms
+    1. Observing
+    2. Modeling
+    3. Simulating
+    4. Collecting and Analyzing Data
+- Big Data Challenges
+    - Volume: data larger than a single machine (CPU,RAM,disk)
+        - Infrastructures and techniques that scale by using more machines
+        - Google led the way in mastering “cluster data processing”
+    - Velocity: endless stream of new events
+        - No time for heavy indexing (new data keeps arriving always)
+        - led to development of data stream technologies
+    - Variety: Dirty, incomplete, inconclusive data (e.g. text in tweets)
+        - Semantic complications
+            - AI techniques needed,not just database queries
+        - Technical complications
+            - Skewed Value Distributions and “PowerLaws”
+            - Complex Graph Structures -> Expensive Random Access
+            - Complicates cluster data processing(difficult to partition equally)
+            - Localizing data by attaching pieces where you need them makes Big Data even bigger
+- Supercomputing vs Cluster Computing vs Cloud Computing
+- Economics of Cloud Computing
+    - A major argument for Cloud Computing is pricing
+        - We could own our machines
+        - Since machines rarely operate at more than 30% capacity, we are paying for wasted resources
+    - Pay-as-you-go rental model
+    - No other costs
+    - This makes computing a commodity
+
 ### Cloud Computing
 
 
