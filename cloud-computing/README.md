@@ -11,7 +11,7 @@ As we work on large computer infrastructures, we distinguish between three relat
 
 The last part of the lecture describes Amazon Web Services (AWS) in some detail to prepare you for the practicum. Services to remember are ==S3== block storage (infinitely scaling storage -- presumably implemented by spreading storage with replication over the hundreds of thousands of machines Amazon owns), ==EBFS== filesystems which are virtual disks that store their data remotely on S3 but do a lot of caching to avoid network traffic, and the ==EC2== service that allows to power up virtual machines in the cloud (and some of the options to choose from in terms of CPU, RAM, and local disks aka "ephimeral storage" which are empty when you start-up).
 
-## Course Summary
+## Course Materials Summary
 
 ### Course Introduction
 
@@ -60,6 +60,61 @@ The last part of the lecture describes Amazon Web Services (AWS) in some detail 
     - This makes computing a commodity
 
 ### Cloud Computing
+
+- What?
+    - Computing resources as a metered service (“pay as you go”)
+    - Ability to dynamically provision virtual machines
+- Why?
+    - Cost: capital vs. operating expenses
+    - Scalability: “infinite” capacity
+    - Elasticity: scale up or down on demand
+- Does it make sense?
+    - Benefits to cloud users
+    - Business case for cloud providers
+- Everything as a service
+    - Utility computing = Infrastructure as a Service (IaaS)
+    - Platform as a Service (PaaS)
+    - Software as a Service (SaaS)
+- Several Historical Trends
+    - Shared Utility Computing
+    - Data Center Co-location
+    - Pay as You Go
+    - Virtualization
+    - Minicomputers
+    - The age of the x86 PC
+    - Mobile and Server separate
+![](https://i.imgur.com/8yFDQop.png)
+    - Client requests are handled in the first tier
+    - Much use of caching: the second tier
+- Eric Brewer’s CAP theorem
+    - Consistency & Availability & Partition-tolerance
+    - weaken consistency for faster response
+- CASE STUDY: AMAZON WEB SERVICES
+    - Global Physical Infrastructure
+    ![](https://i.imgur.com/TafEHqx.png)
+    - EC2 Architecture
+    ![](https://i.imgur.com/5EECUK1.png)
+    - Simple Storage Service (S3)
+        - A bucket is a container for objects and describes location, logging, accounting, and access control. A bucket can hold any number of objects, which are files of up to 5TB. A bucket has a name that must be globally unique.
+        - A bucket has a flat directory structure (despite the appearance given by the interactive web interface.)
+        - Fundamental operations
+            - POST a new object or update an existing object.
+            - GET an existing object from a bucket.
+            - DELETE an object from the bucket.
+            - LIST keys present in a bucket, with a filter.
+        - Weak Consistency Model
+    - Elastic Block Store
+        - An EBS volume is a virtual disk of a fixed size with a block read/write interface. It can be mounted as a filesystem on a running EC2 instance where it can be updated incrementally. Unlike an instance store, an EBS volume is persistent.
+        - Fundamental operations
+            - CREATE a new volume (1GB-1TB)
+            - COPY a volume from an existing EBS volume or S3 object.
+            - MOUNT on one instance at a time.
+            - SNAPSHOT current state to an S3 object.
+        - EBS is approx. 3x more expensive by volume and 10x more expensive by IOPS than S3
+        - File-system (EBS and also HDFS) is an abstraction on top of S3
+    - Use Glacier for Cold Data
+        - Glacier is structured like S3: a vault is a container for an arbitrary number of archives. Policies, accounting, and access control are associated with vaults, while an archive is a single object.
+
 
 
 ## References
