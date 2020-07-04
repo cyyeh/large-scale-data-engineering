@@ -6,3 +6,5 @@ mapreduce-hadoop/hdfs_design.pdf filter=lfs diff=lfs merge=lfs -text
 mapreduce-hadoop/map_reduce_tutorial.pdf filter=lfs diff=lfs merge=lfs -text
 mapreduce-hadoop/mapreduce.pdf filter=lfs diff=lfs merge=lfs -text
 cloud-computing/00-Intro.pdf filter=lfs diff=lfs merge=lfs -text
+assignments/assingment1/Assignment[[:space:]]1.pdf filter=lfs diff=lfs merge=lfs -text
+assignments/assingment1/Assignment[[:space:]]1-recap.pdf filter=lfs diff=lfs merge=lfs -text
