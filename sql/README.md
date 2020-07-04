@@ -15,3 +15,19 @@ Other storage tricks are "zone-maps" which keep simple statistics (Min,Max) for 
 Modern analytical database systems also overhaul the SQL query engine, using either vectorization or just-in-time compilation (into fast machine code) to use much less CPU resources per processed tuple than OLTP row-stores. Finally, high-end analytical database systems are parallel systems that run on a cluster and try to involve all cores of all nodes in queries, to make the system faster and more scalable.
 
 Modern Hadoop data formats such as ORC and Parquet have adopted columnar data storage: even though they store all columns together in a HDFS file (to make sure all columns are on the same machine), inside that file the data is placed column after column in huge chunks of rows (rowgroups). Applications that only read a few columns can thus skip over the unused columns. (less I/O). These new data formats also apply columnar compression and sometimes also zone-maps. So, the more advanced SQL-on-Hadoop systems try to adopt all modern ideas on analytical database systems (e.g. Hive uses vectorization, Impala uses JIT), while also trying to fit into the Hadoop ecosystem. That means for instance, that they must try to ensure that they execute data near to where it resides on HDFS (to save bandwidth), to be able to query many different Hadoop data formats in situ, without requiring to first load them into the database, and coordinate their work on the Hadoop cluster (busy cores, RAM requirements) with YARN, in order not to run out of resources and/or suffer from interference by other cluster users.
+
+## References
+
+- Course Materials
+    - [SQL on Big Data](https://github.com/cyyeh/large-scale-data-engineering/blob/master/sql/08-SQL%20on%20Big%20Data.pdf)
+- Supplementary Materials
+    - [Hive: a warehousing solution over a map-reduce framework](https://github.com/cyyeh/large-scale-data-engineering/blob/master/sql/hive.pdf)
+    - [Amazon Redshift and the Case for Simpler Data warehouses](https://github.com/cyyeh/large-scale-data-engineering/blob/master/sql/aws-redshift.pdf)
+    - [The Snowflake Elastic Data Warehouse](https://github.com/cyyeh/large-scale-data-engineering/blob/master/sql/snowflake.pdf)
+    - [presentation on Snowflake](https://github.com/cyyeh/large-scale-data-engineering/blob/master/sql/snowflake-slide.pdf)
+    - [Choosing A Cloud DBMS: Architectures and Tradeoffs](https://github.com/cyyeh/large-scale-data-engineering/blob/master/sql/choosing-cloud-dbms.pdf)
+    - [Infoworld Article on SQL-on-Hadoop systems](https://www.infoworld.com/article/2683729/10-ways-to-query-hadoop-with-sql.html)
+    - [ZDNet article on SQL-on-Hadoop systems](https://www.zdnet.com/article/sql-and-hadoop-its-complicated/)
+    - [ZDNet article on SQL-in-the-cloud systems](https://www.zdnet.com/article/cloud-data-warehouse-race-heats-up/)
+    - [Introducing the Amazon Redshift data warehouse](https://www.youtube.com/watch?v=JxLpj_TnisM)
+    - [Exploring BigData with Google BigQuery](https://www.slideshare.net/DharmeshVaya/exploring-bigdata-with-google-bigquery)
