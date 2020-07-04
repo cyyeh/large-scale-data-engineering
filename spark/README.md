@@ -1,4 +1,4 @@
-# The Spark Framework
+# [The Spark Framework](https://hackmd.io/@distributed-systems-engineering/spark)
 
 course website: https://event.cwi.nl/lsde/2019/spark.shtml
 
