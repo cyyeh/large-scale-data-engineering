@@ -1,4 +1,4 @@
-# MapReduce & Hadoop
+# [MapReduce & Hadoop](https://hackmd.io/@mit-distributed-systems-engineering/mapreduce-hadoop)
 
 course website: https://event.cwi.nl/lsde/2019/mapreduce.shtml
 
@@ -15,3 +15,16 @@ The user is expected to write a Map() and Reduce() function, both of which map (
 The MapReduce framework optimized data movement by asking the namenode for the location(s) of the HDFS input files and assigning files (or parts of files, called splits) to mappers on machines where this data is on the local disk. Because the reducers get data from all mappers, as determined by the key, MapReduce must perform network communication for the reduce phase. If provided, it will use Combine() functions to reduce the data volume that needs to be sent.
 Examples were given in the python programming language (pseudo-code). Hadoop is the open-source implementation of MapReduce. The default programming language in Hadoop is Java, but bindings for other languages are available, and python is quite popular.
 In the past 10 years, Hadoop has evolved from a MapReduce clone into a whole ecosystem with many tools. This is the most popular "cluster operating system" for organizations that manage their own Big Data clusters ("on premise", as opposed to in the cloud). This evolution was enabled by the second major version of Hadoop that separated MapReduce from job scheduling, i.e. YARN. This separation of general facilities (storage: HDFS, scheduling: YARN, compute: MapReduce) thus created room for a whole ecosystem beyond MapReduce, with many alternative tools (e.g. SQL systems such as Impala and Hive) and programming frameworks (e.g. Flink and Spark) operating on top of it.
+
+## References
+
+- Course Materials
+    - [The MapReduce Framework and Hadoop](https://github.com/cyyeh/large-scale-data-engineering/blob/master/mapreduce-hadoop/03-MapReduce%20%26%20Hadoop.pdf)
+- Supplementary Materials
+    - [MapReduce: simplified data processing on large clusters](https://github.com/cyyeh/large-scale-data-engineering/blob/master/mapreduce-hadoop/mapreduce.pdf)
+    - [The Hadoop Distributed File System (HDFS)](https://github.com/cyyeh/large-scale-data-engineering/blob/master/mapreduce-hadoop/hdfs_design.pdf)
+    - [A Very Brief Introduction to MapReduce](https://github.com/cyyeh/large-scale-data-engineering/blob/master/mapreduce-hadoop/map_reduce_tutorial.pdf)
+    - [MapReduce according to Wikipedia](https://www.wikiwand.com/en/MapReduce)
+    - [Simple introduction to HDFS](http://hadoopilluminated.com/hadoop_illuminated/HDFS_Intro.html)
+    - [An Introduction to MapReduce](https://www.slideshare.net/franebandov/an-introduction-to-mapreduce-6789635)
+    - [Hadoop Tutorial: Intro to HDFS](https://www.youtube.com/watch?v=ziqx2hJY8Hg)
