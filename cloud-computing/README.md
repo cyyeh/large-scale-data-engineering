@@ -10,3 +10,16 @@ We explain ==Eric Brewers CAP theorem==: a global software system cannot achieve
 As we work on large computer infrastructures, we distinguish between three related areas: (1) ==Super Computing==, where performance is king and programmability a side-issue, (2) ==Cluster Computing==, which is about quickly getting things done on large clusters of unreliable machines, and (3) ==Cloud Computing==, where computation is performed in large clusters operated by third party, sold as a commodity service to users based on their actual use, seamlessly allowing to get more or less of it based on their needs (elasticity). In the practicum where we use ==Hadoop== (cluster computing) on ==Amazon Web Services== (cloud computing) we hence combine (2) and (3). Super computing is out of scope for this module. In cloud computing, we further distinguish between ==IaaS==: Infrastructure-as-a-Service (virtual machines for rent, e.g. Amazon EC2), ==PaaS==: Platform as-a-service (database system for rent, e.g. Amazon Redshift) and ==SaaS==: Software-as-a-Service (application for rent, e.g. Microsoft Office 365 or Salesforce).
 
 The last part of the lecture describes Amazon Web Services (AWS) in some detail to prepare you for the practicum. Services to remember are ==S3== block storage (infinitely scaling storage -- presumably implemented by spreading storage with replication over the hundreds of thousands of machines Amazon owns), ==EBFS== filesystems which are virtual disks that store their data remotely on S3 but do a lot of caching to avoid network traffic, and the ==EC2== service that allows to power up virtual machines in the cloud (and some of the options to choose from in terms of CPU, RAM, and local disks aka "ephimeral storage" which are empty when you start-up).
+
+## Course Materials
+
+- [Course Introduction](https://github.com/cyyeh/large-scale-data-engineering/blob/master/cloud-computing/00-Intro.pdf)
+- [Cloud Computing](https://github.com/cyyeh/large-scale-data-engineering/blob/master/cloud-computing/01-CloudComputing.pdf)
+
+## References
+
+- [The Datacenter as a Computer: An Introduction to the Design of Warehouse-Scale Machines](https://event.cwi.nl/lsde/papers/barroso2009.pdf)
+- [Cloud Computing according to Wikipedia](https://en.wikipedia.org/wiki/Cloud_computing)
+- [Amazon Whitepaper: Architecting for the Cloud](https://github.com/cyyeh/large-scale-data-engineering/blob/master/cloud-computing/AWS_Cloud_Best_Practices.pdf)
+- [Strata 2011: Werner Vogels, "Data Without Limits"](https://youtu.be/oNTp5spjv0w)
+- [Introduction to Amazon Web Services - How to Scale your Next Idea on AWS : A Love Story - Jinesh Varia (Updated Jan 2014)](https://www.slideshare.net/AmazonWebServices/building-powerful-web-applications-in-the-aws-cloud-a-love-story-jinesh-varia)
