@@ -18,7 +18,7 @@ The last part of the lecture describes Amazon Web Services (AWS) in some detail 
 
 ## References
 
-- [The Datacenter as a Computer: An Introduction to the Design of Warehouse-Scale Machines](https://event.cwi.nl/lsde/papers/barroso2009.pdf)
+- [The Datacenter as a Computer: An Introduction to the Design of Warehouse-Scale Machines](https://github.com/cyyeh/large-scale-data-engineering/blob/master/cloud-computing/datacenter-as-computer.pdf)
 - [Cloud Computing according to Wikipedia](https://en.wikipedia.org/wiki/Cloud_computing)
 - [Amazon Whitepaper: Architecting for the Cloud](https://github.com/cyyeh/large-scale-data-engineering/blob/master/cloud-computing/AWS_Cloud_Best_Practices.pdf)
 - [Strata 2011: Werner Vogels, "Data Without Limits"](https://youtu.be/oNTp5spjv0w)
