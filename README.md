@@ -1,5 +1,7 @@
 # [Large Scale Data Engineering](https://hackmd.io/@distributed-systems-engineering/large-scale-data-engineering)
 
+###### tags: `data-engineering`
+
 course website: https://event.cwi.nl/lsde/2019/cloud.shtml
 
 ## Overview 
