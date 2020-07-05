@@ -1,4 +1,4 @@
-# Large Scale Data Engineering 2019
+# [Large Scale Data Engineering](https://hackmd.io/@distributed-systems-engineering/large-scale-data-engineering)
 
 course website: https://event.cwi.nl/lsde/2019/cloud.shtml
 
@@ -12,11 +12,11 @@ The course further gives an overview of the infrastructures currently at the dis
 
 ## Lecture Outline
 
-- Cloud Computing 101
-- MapReduce & Hadoop
-- The Spark Framework
-- SQL on Big Data
-- Scalable Machine Learning
-- noSQL Systems
-- Data Streams
+- [Cloud Computing 101](https://hackmd.io/@distributed-systems-engineering/cloud-computing)
+- [MapReduce & Hadoop](https://hackmd.io/@distributed-systems-engineering/mapreduce-hadoop)
+- [The Spark Framework](https://hackmd.io/@distributed-systems-engineering/spark)
+- [SQL on Big Data](https://hackmd.io/@distributed-systems-engineering/sql-on-bigdata)
+- [Scalable Machine Learning](https://hackmd.io/@distributed-systems-engineering/scalable-ml)
+- [noSQL Systems](https://hackmd.io/@distributed-systems-engineering/nosql-systems)
+- [Data Streams](https://hackmd.io/@distributed-systems-engineering/data-streams)
 
