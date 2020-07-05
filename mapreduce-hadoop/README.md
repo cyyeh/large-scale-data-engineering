@@ -20,12 +20,139 @@ In the past 10 years, Hadoop has evolved from a MapReduce clone into a whole eco
 
 ## Course Materials Summary
 
-### MapReduce
-
 ![](https://i.imgur.com/JQgjbsQ.png)
 
-
-### Hadoop
+- Parallelisation challenges
+    - How do we assign work units to workers?
+    - What if we have more work units than workers?
+    - What if workers need to share partial results?
+    - How do we know all the workers have finished?
+    - What if workers die?
+    - What if data gets lost while transmitted over the network?
+- Common theme of all above problems
+    - a synchronization issue
+        - Communication between workers (e.g., to exchange state)
+        - Access to shared resources (e.g., data)
+- Managing multiple workers
+    - Tools
+        - Semaphores (lock, unlock)
+        - Conditional variables (wait, notify, broadcast)
+        - Barriers
+    - Problems
+        - Deadlock, livelock, race conditions...
+        - Dining philosophers, sleeping barbers, cigarette smokers...
+    - Moral of the story: be careful!
+- Current tools
+    - Programming models
+        - Shared memory (pthreads)
+            - ![](https://i.imgur.com/CyZXewW.png)
+        - Message passing (MPI)
+            - ![](https://i.imgur.com/M1kJm16.png)
+    - Design patterns
+        - Master-slaves
+            - ![](https://i.imgur.com/XUlHv1A.png)
+        - Producer-consumer flows
+            - ![](https://i.imgur.com/uhOK8J3.png)
+        - Shared work queues
+            - ![](https://i.imgur.com/k3goedt.png)
+- The MapReduce Framework alleviates human bottleneck on parallel and concurrent programming
+    - It’s all about the right level of abstraction
+        - Moving beyond the von Neumann architecture
+        - We need better programming models
+    - Hide system-level details from the developers
+        - No more race conditions, lock contention, etc.
+    - Separating the what from how
+        - Developer specifies the computation that needs to be performed
+        - Execution framework (aka runtime) handles actual execution
+- Big data needs big ideas
+    - Scale “out”, not “up”
+        - Limits of SMP and large shared-memory machines
+    - Move processing to the data
+        - Cluster has limited bandwidth, cannot waste it shipping data around
+    - Process data sequentially, avoid random access
+        - Seeks are expensive, disk throughput is reasonable, memory throughput is even better
+    - Seamless scalability
+        - From the mythical man-month to the tradable machine-hour
+    - Computation is still big
+        - But if efficiently scheduled and executed to solve bigger problems we can throw more hardware at the problem and use the same code
+        - Remember, the datacenter is the computer
+- MapReduce
+    - ![](https://i.imgur.com/8Rwpara.png)
+    - Programmers specify two functions
+        - `map (k1, v1) → [<k2, v2>]`
+        - `reduce (k2, [v2]) → [<k3, v3>]`
+            - All values with the same key are sent to the same reducer
+    - The execution framework(see MapReduce runtime) handles everything else
+    - This is the minimal set of information to provide
+    - Usually, programmers also specify
+        - `partition (k’, number of partitions) → partition for k’`
+            - Often a simple hash of the key, e.g., `hash(k’) mod n`
+            - Divides up key space for parallel reduce operations
+        - `combine (k’, v’) → <k’, v’>*`
+            - Mini-reducers that run in memory after the map phase
+            - Used as an optimization to reduce network traffic
+- MapReduce runtime
+    - Orchestration of the distributed computation
+    - Handles scheduling
+        - Assigns workers to map and reduce tasks
+    - Handles data distribution
+        - Moves processes to data
+    - Handles synchronization
+        - Gathers, sorts, and shuffles intermediate data
+    - Handles errors and faults
+        - Detects worker failures and restarts
+    - Everything happens on top of a distributed file system (more information later)
+- MapReduce Implementations
+    - Google has a proprietary implementation in C++
+        - Bindings in Java, Python
+    - Hadoop is an open-source implementation in Java
+        - Development led by Yahoo, now an Apache project
+        - Used in production at Yahoo, Facebook, Twitter, LinkedIn, Netflix, ...
+        - The de facto big data processing platform
+        - Rapidly expanding software ecosystem
+    - Lots of custom research implementations
+        - For GPUs, cell processors, etc.
+![](https://i.imgur.com/pDVvEFs.png)
+- Distributed file system
+    - Do not move data to workers, but move workers to the data!
+        - Store data on the local disks of nodes in the cluster
+        - Start up the workers on the node that has the data local
+    - Why?
+        - Avoid network traffic if possible
+        - Not enough RAM to hold all the data in memory
+        - Disk access is slow, but disk throughput is reasonable
+    - Implementations
+        - GFS (Google File System) for Google’s MapReduce
+        - HDFS (Hadoop Distributed File System) for Hadoop
+        - Note: all data is replicated for fault-tolerance (HDFS default:3x)
+- GFS
+    - Assumptions
+        - Commodity hardware over exotic hardware
+        - High component failure rates
+        - “Modest” number of huge files
+        - Files are write-once, mostly appended to
+        - Large streaming reads over random access
+    - Design Decisions
+        - Files stored as chunks
+            - Fixed size (64MB)
+        - Reliability through replication
+            - Each chunk replicated across 3+ chunkservers
+        - Single master to coordinate access, keep metadata
+            - Simple centralized management
+        - No data caching
+            - Little benefit due to large datasets, streaming reads
+        - Simplify the API
+            - Push some of the issues onto the client (e.g., data layout)
+- From GFS to HDFS
+    - Terminology differences:
+        - GFS master = Hadoop namenode
+        - GFS chunkservers = Hadoop datanodes
+    - Differences
+        - Different consistency model for file appends
+        - Implementation
+        - Performance
+- HDFS architecture
+    ![](https://i.imgur.com/69joLGz.png)
 
 ## References
 
