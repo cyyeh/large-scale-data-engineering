@@ -1,5 +1,7 @@
 # [Cloud Computing](https://hackmd.io/@distributed-systems-engineering/cloud-computing)
 
+###### tags: `data-engineering`
+
 course website: https://event.cwi.nl/lsde/2019/cloud.shtml
 
 ## Overview 
