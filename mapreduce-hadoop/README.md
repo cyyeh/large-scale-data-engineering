@@ -1,5 +1,7 @@
 # [MapReduce & Hadoop](https://hackmd.io/@distributed-systems-engineering/mapreduce-hadoop)
 
+###### tags: `data-engineering`
+
 course website: https://event.cwi.nl/lsde/2019/mapreduce.shtml
 
 ## Overview
