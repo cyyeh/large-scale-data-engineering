@@ -1,5 +1,7 @@
 # [Scalable Machine Learning](https://hackmd.io/@distributed-systems-engineering/scalable-ml)
 
+###### tags: `data-engineering`
+
 course website: https://event.cwi.nl/lsde/2019/ml.shtml
 
 ## Overview
