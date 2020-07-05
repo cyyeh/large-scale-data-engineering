@@ -20,6 +20,8 @@ In the past 10 years, Hadoop has evolved from a MapReduce clone into a whole eco
 
 ## Course Materials Summary
 
+### Parallel and Concurrent Programming
+
 ![](https://i.imgur.com/JQgjbsQ.png)
 
 - Parallelisation challenges
@@ -64,6 +66,11 @@ In the past 10 years, Hadoop has evolved from a MapReduce clone into a whole eco
     - Separating the what from how
         - Developer specifies the computation that needs to be performed
         - Execution framework (aka runtime) handles actual execution
+
+---
+
+### MapReduce and HDFS
+
 - Big data needs big ideas
     - Scale “out”, not “up”
         - Limits of SMP and large shared-memory machines
@@ -153,6 +160,101 @@ In the past 10 years, Hadoop has evolved from a MapReduce clone into a whole eco
         - Performance
 - HDFS architecture
     ![](https://i.imgur.com/69joLGz.png)
+- Namenode responsibilities
+    - Managing the file system namespace
+        - Holds file/directory structure, metadata, file-to-block mapping, access permissions, etc.
+    - Coordinating file operations
+        - Directs clients to datanodes for reads and writes
+        - No data is moved through the namenode
+    - Maintaining overall health
+        - Periodic communication with the datanodes
+        - Block re-replication and rebalancing
+        - Garbage collection
+![](https://i.imgur.com/xzhKHoS.png)
+
+---
+
+### Programming for a Data Center
+
+- Data Center Storage Hierarchy
+    ![](https://i.imgur.com/BDRpRSi.jpg)
+- Important Latencies
+    ![](https://i.imgur.com/ul9MPvH.png)
+ 
+---
+
+### Developing MapReduce Algorithms
+    
+- MapReduce algorithm design
+    - How do you express everything in terms of `map()`, `reduce()`, `combine()`, and `partition()`?
+- Computing the mean
+    ![](https://i.imgur.com/AmhPBbQ.png)
+- Basic Hadoop API
+    - Mapper
+        - `void setup(Mapper.Context context)`
+            - Called once at the beginning of the task
+        - `void map(K key, V value, Mapper.Context context)`
+            - Called once for each key/value pair in the input split
+        - `void cleanup(Mapper.Context context)`
+            - Called once at the end of the task
+    - Reducer/Combiner
+        - `void setup(Reducer.Context context)`
+            - Called once at the start of the task
+        - `void reduce(K key, Iterable<V> values, Reducer.Context ctx)`
+            - Called once for each key
+        - `void cleanup(Reducer.Context context)`
+            - Called once at the end of the task
+- Anatomy of a job
+    - MapReduce program in Hadoop = Hadoop job
+        - Jobs are divided into map and reduce tasks
+        - An instance of running a task is called a task attempt (occupies a slot)
+        - Multiple jobs can be composed into a workflow
+    - Job submission
+        - Client (i.e., driver program) creates a job, configures it, and submits it to jobtracker
+        - That’s it! The Hadoop cluster takes over
+    - Behind the scenes
+        - Input splits are computed (on client end)
+        - Job data (jar, configuration XML) are sent to JobTracker
+        - JobTracker puts job data in shared location, enqueues tasks
+        - TaskTrackers poll for tasks
+        - Off to the races
+- Input and output
+    - InputFormat
+        - TextInputFormat
+        - KeyValueTextInputFormat
+        - SequenceFileInputFormat
+    - OutputFormat
+        - TextOutputFormat
+        - SequenceFileOutputFormat
+
+---
+
+### The Hadoop Ecosystem
+
+![](https://i.imgur.com/1ZcXemn.png)
+- YARN: Hadoop version 2.0
+    - YARN = Yet-Another-Resource-Negotiator
+    - Provides API to develop any generic distribution application
+    - Handles scheduling and resource request
+    - MapReduce (MR2) is one such application in YARN
+- YARN architecture
+    ![](https://i.imgur.com/w8PHMbV.png)
+- The Hadoop Ecosystem
+    - Basic services
+        - HDFS = Open-source GFS clone originally funded by Yahoo
+        - MapReduce = Open-source MapReduce implementation (Java,Python)
+        - YARN = Resource manager to share clusters between MapReduce and other tools
+        - HCATALOG = Meta-data repository for registering datasets available on HDFS (Hive Catalog)
+        - Spark = new in-memory MapReduce++ based on Scala (avoids HDFS writes)
+    - Data Querying
+        - Hive = SQL system that compiles to MapReduce(Hortonworks)
+        - Impala, or, Drill = efficient SQL systems that do *not* use MapReduce(Cloudera,MapR)
+        - SparkSQL = SQL system running on top of Spark
+    - Graph Processing
+        - Giraph = Pregel clone on Hadoop(Facebook)
+        - GraphX = graph analysis library of Spark
+    - Machine Learning
+        - MLib = Spark –based library of machine learning algorithms
 
 ## References
 
