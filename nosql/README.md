@@ -1,5 +1,7 @@
 # [noSQL Systems](https://hackmd.io/@distributed-systems-engineering/nosql-systems)
 
+###### tags: `data-engineering`
+
 course website: https://event.cwi.nl/lsde/2019/nosql.shtml
 
 ## Overview
