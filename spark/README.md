@@ -26,6 +26,139 @@ Spark offers its MLLIB library that provides a set of ready-to-run machine learn
 
 MLLIB contains many different machine learning algorithms that can be easily connected to data through the Spark concept of RDDs. The output of the learning (the model) is also an RDD and can subsequently be used to score new users (i.e. make recommendations). Besides tight integration with Spark processing pipelines (and e.g. Spark SQL) another advantage of MLLIB is that the algorithms in it are implemented in a scalable, distributed fashion. Therefore, one can address large problems with MLLIB using clusters, which would not fit on a single machine.
 
+## Courses Materials Summary
+
+### Spark/Spark SQL
+
+- What is Spark?
+    - Fast and expressive cluster computing system interoperable with Apache Hadoop
+    - Improves efficiency through(Up to 100× faster)
+        - In-memory computing primitives
+        - General computation graphs
+    - Improves usability through(Often 5× less code)
+        - Rich APIs in Scala, Java, Python
+        - Interactive shell
+- The Spark Stack
+    - More details: https://amplab.cs.berkeley.edu/
+    ![](https://i.imgur.com/JQwNvf7.png)
+- Why a New Programming Model?
+    - MapReduce greatly simplified big data analysis
+    - But as soon as it got popular, users wanted more
+        - More complex, multi-pass analytics (e.g. ML, graph)
+        - More interactive ad-hoc queries
+        - More real-time stream processing
+    - All 3 need faster data sharing across parallel jobs
+- Data Sharing in MapReduce
+    ![](https://i.imgur.com/CJASZw1.png)
+    -  Slow due to replication, serialization, and disk IO
+- Data Sharing in Spark
+    ![](https://i.imgur.com/H6WrTaM.png)
+    -  ~10× faster than network and disk
+- Spark Programming Model
+    - Key idea: resilient distributed datasets (RDDs)
+        - Distributed collections of objects that can be cached in memory across the cluster
+        - Manipulated through parallel operators
+        - Automatically recomputed on failure
+    - Programming interface
+        - Functional APIs in Scala, Java, Python
+        - Interactive use from Scala shell
+![](https://i.imgur.com/iO9oFyS.png)
+- Spark in Scala and Java
+    ![](https://i.imgur.com/txGZehs.png)
+- Supported Operators
+    ![](https://i.imgur.com/WWLsaMI.png)
+- Software Components
+    ![](https://i.imgur.com/BcIoy6v.png)
+    - Spark client is library in user program (1 instance per app)
+    - Runs tasks locally or on cluster
+        - Mesos, YARN, standalone mode
+    - Accesses storage systems via Hadoop InputFormat API
+        - Can use HBase, HDFS, S3, ... 
+- Task Scheduler
+    ![](https://i.imgur.com/17XIQ5W.png)
+    - General task graphs
+    - Automatically pipelines functions
+    - Data locality aware
+    - Partitioning aware to avoid shuffles
+- Spark SQL
+    - Columnar SQL analytics engine for Spark
+        - Support both SQL and complex analytics
+        - Columnar storage, JIT-compiled execution, Java/Scala/Python UDFs
+        - Catalyst query optimizer (also for DataFrame scripts)
+- Hive Architecture
+    ![](https://i.imgur.com/rqH60NP.png)
+- Spark SQL Architecture
+    ![](https://i.imgur.com/9jWZgSb.png)
+- From RDD to DataFrame
+    - A distributed collection of rows with the same schema (RDDs suffer from type erasure)
+    - Can be constructed from external data sources or RDDs into essentially an RDD of Row objects (SchemaRDDs as of Spark < 1.3)
+    - Supports relational operators (e.g. where, groupby) as well as Spark operations.
+    - Evaluated lazily -> non-materialized logical plan
+- DataFrame: Data Model
+    - Nested data model
+    - Supports both primitive SQL types (boolean, integer, double, decimal, string, data, timestamp) and complex types (structs, arrays, maps, and unions); also user defined types.
+    - First class support for complex data types
+- DataFrame Operations
+    - Relational operations (select, where, join, groupBy) via a DSL
+    - Operators take expression objects
+    - Operators build up an abstract syntax tree (AST), which is then optimized by Catalyst.
+    - Alternatively, register as temp SQL table and perform traditional SQL query strings
+- Catalyst: Plan Optimization & Execution
+    ![](https://i.imgur.com/yRDJX68.png)
+- Performance
+    ![](https://i.imgur.com/sAkLwho.png)
+
+### GraphX/GraphFrames
+
+- Pregel: computational model
+    - Based on Bulk Synchronous Parallel (BSP)
+        - Computational units encoded in a directed graph
+        - Computation proceeds in a series of supersteps
+        - Message passing architecture
+    - Each vertex, at each superstep
+        - Receives messages directed at it from previous superstep
+        - Executes a user-defined function (modifying state)
+        - Emits messages to other vertices (for the next superstep)
+    - Termination
+        - A vertex can choose to deactivate itself
+        - Is “woken up” if new messages received
+        - Computation halts when all vertices are inactive
+- Pregel: implementation
+    - Master-Slave architecture
+        - Vertices are hash partitioned (by default) and assigned to workers
+        - Everything happens in memory
+    - Processing cycle
+        - Master tells all workers to advance a single superstep
+        - Worker delivers messages from previous superstep, executing vertex computation
+        - Messages sent asynchronously (in batches)
+        - Worker notifies master of number of active vertices
+    - Fault tolerance
+        - Checkpointing
+        - Heartbeat/revert
+- Graph Programming Frameworks
+    - Google Pregel
+        - Non open-source, probably not used much anymore
+    - Apache Giraph
+        - Developed and used by Facebook
+    - Apache Flink
+        - Gelly API
+    - Apache Spark
+        - GraphX API
+        - DataFrames API
+
+### MLlib
+
+- What is MLLIB?
+    - MLlib is a Spark subproject providing machine learning primitives
+        - initial contribution from AMPLab, UC Berkeley
+        - shipped with Spark since version 0.8
+    - Algorithms
+        - classification: logistic regression, linear support vector machine (SVM), naive Bayes
+        - regression: generalized linear regression (GLM)
+        - collaborative filtering: alternating least squares (ALS)
+        - clustering: k-means
+        - decomposition: singular value decomposition (SVD), principal component analysis (PCA)
+
 ## References
 
 - Course Materials
